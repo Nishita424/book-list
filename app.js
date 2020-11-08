@@ -32,7 +32,7 @@ UI.prototype.showAlert = function (msg, className) {
   container.insertBefore(div, form);
   // Timeout after 3s
   setTimeout(function () {
-    document.querySelector('.error').remove();
+    document.querySelector('.alert').remove();
   }, 3000);
 };
 
@@ -60,9 +60,11 @@ document.getElementById('book-form').addEventListener('submit', function (e) {
     ui.showAlert('Please fill all fields', 'error');
   } else {
     ui.addBookToList(book);
-  }
+    // Show add alert for successful addition
+    ui.showAlert('Book added successfully', 'success');
 
-  ui.clearFields();
+    ui.clearFields();
+  }
 
   e.preventDefault();
 });
